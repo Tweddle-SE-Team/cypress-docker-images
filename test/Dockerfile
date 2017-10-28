@@ -15,4 +15,9 @@ RUN set -ex && \
 ENV npm_config_loglevel=warn
 
 RUN npm install -g cypress@1.0.2
+
+ADD xvfb.init /etc/init.d/xvfb
+RUN chmod +x /etc/init.d/xvfb
+RUN update-rc.d xvfb defaults
+
 CMD ["cypress", "run"]
